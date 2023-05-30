@@ -5,8 +5,15 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
-static int borderpx = 2;
+static char *font = "Fira Code,Fira Code Retina:style=Retina,Regular:size=11:antialias=true:autohint=true";
+/* Spare fonts */
+static char *font2[] = {
+	"Material Design Icons:style=Regular:pixelsize=16:antialias=true:autohint=true",
+	"Hack Nerd Font Mono:pixelsize=18:antialias=true:autohint=true",
+	"Inconsolata for Powerline:pixelsize=12:antialias=true:autohint=true",
+};
+
+static int borderpx = 20;
 
 /*
  * What program is execed by st depends of these precedence rules:
@@ -91,48 +98,21 @@ char *termname = "st-256color";
  *
  *	stty tabs
  */
-unsigned int tabspaces = 8;
+unsigned int tabspaces = 4;
 
 /* Terminal colors (16 first used in escape sequence) */
-static const char *colorname[] = {
-	/* 8 normal colors */
-	"black",
-	"red3",
-	"green3",
-	"yellow3",
-	"blue2",
-	"magenta3",
-	"cyan3",
-	"gray90",
 
-	/* 8 bright colors */
-	"gray50",
-	"red",
-	"green",
-	"yellow",
-	"#5c5cff",
-	"magenta",
-	"cyan",
-	"white",
-
-	[255] = 0,
-
-	/* more colors can be added after 255 to use with DefaultXX */
-	"#cccccc",
-	"#555555",
-	"gray90", /* default foreground colour */
-	"black", /* default background colour */
-};
+//#include </home/daniel/builds/st/aesthetic.h>
+#include </home/daniel/builds/st/catppuccin.h>
 
 
 /*
- * Default colors (colorname index)
  * foreground, background, cursor, reverse cursor
  */
-unsigned int defaultfg = 258;
-unsigned int defaultbg = 259;
-unsigned int defaultcs = 256;
-static unsigned int defaultrcs = 257;
+unsigned int defaultfg = 256;
+unsigned int defaultbg = 257;
+unsigned int defaultcs = 258;
+static unsigned int defaultrcs = 258;
 
 /*
  * Default shape of cursor
@@ -187,12 +167,22 @@ static MouseShortcut mshortcuts[] = {
 #define MODKEY Mod1Mask
 #define TERMMOD (ControlMask|ShiftMask)
 
+/* commands for external pipe */
+//static char *openurlcmd[] = { "/bin/sh", "-c",//TODO
+//	"xargs --null /home/daniel/.local/bin/openurlcmd",
+//	NULL };
+
+static char *openurlcmd[] = { "/bin/sh", "-c",//TODO
+	"/home/daniel/.local/bin/openurlcmd",
+	NULL };
+
 static Shortcut shortcuts[] = {
 	/* mask                 keysym          function        argument */
 	{ XK_ANY_MOD,           XK_Break,       sendbreak,      {.i =  0} },
 	{ ControlMask,          XK_Print,       toggleprinter,  {.i =  0} },
 	{ ShiftMask,            XK_Print,       printscreen,    {.i =  0} },
 	{ XK_ANY_MOD,           XK_Print,       printsel,       {.i =  0} },
+	{ MODKEY, XK_u, externalpipe, { .v = openurlcmd } }, //TODO
 	{ TERMMOD,              XK_Prior,       zoom,           {.f = +1} },
 	{ TERMMOD,              XK_Next,        zoom,           {.f = -1} },
 	{ TERMMOD,              XK_Home,        zoomreset,      {.f =  0} },
@@ -201,6 +191,10 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
+	{ MODKEY|ShiftMask,     XK_K,           kscrollup,      {.i = +60} },
+	{ MODKEY|ShiftMask,     XK_J,           kscrolldown,    {.i = +60} },
+	{ MODKEY,               XK_k,           kscrollup,      {.i = +1} },
+	{ MODKEY,               XK_j,           kscrolldown,    {.i = +1} },
 };
 
 /*
