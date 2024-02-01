@@ -102,8 +102,8 @@ unsigned int tabspaces = 4;
 
 /* Terminal colors (16 first used in escape sequence) */
 
-//#include </home/daniel/builds/st/aesthetic.h>
-#include </home/daniel/builds/st/catppuccin.h>
+// #include "aesthetic.h"
+#include "catppuccin.h"
 
 
 /*

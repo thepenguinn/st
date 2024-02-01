@@ -36,4 +36,4 @@ STLDFLAGS = $(LIBS) $(LDFLAGS)
 #       `$(PKG_CONFIG) --libs freetype2`
 
 # compiler and linker
-# CC = c99
+CC = clang
