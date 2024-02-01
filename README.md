@@ -1,7 +1,7 @@
 # My build of suckless's st
 
 This is my build of [suckless's](https://suckless.org) [st](https://st.suckless.org).
-For more information on building and configuring dwm, vist dwm's home
+For more information on building and configuring st, vist dwm's home
 [page](https://st.suckless.org).
 
 # Patches
