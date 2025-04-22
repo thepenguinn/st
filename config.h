@@ -5,12 +5,12 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Fira Code,Fira Code Retina:style=Retina,Regular:size=11:antialias=true:autohint=true";
+static char *font = "Fira Code Retina:style=Retina,Regular:size=8:antialias=true:autohint=true";
 /* Spare fonts */
 static char *font2[] = {
-	"Material Design Icons:style=Regular:pixelsize=16:antialias=true:autohint=true",
-	"Hack Nerd Font Mono:pixelsize=18:antialias=true:autohint=true",
-	"Inconsolata for Powerline:pixelsize=12:antialias=true:autohint=true",
+    "Hack Nerd Font Mono:pixelsize=20:antialias=true:autohint=true",
+	"Material Design Icons:style=Regular:pixelsize=20:antialias=true:autohint=true",
+	"Inconsolata for Powerline:pixelsize=20:antialias=true:autohint=true",
 };
 
 static int borderpx = 20;
